@@ -1,0 +1,502 @@
+/* Base Styles & Variables */
+:root {
+    --primary: #c02a2a;
+    --primary-hover: #a91f1f;
+    --primary-light: #f9e7e7;
+    --dark: #2d3748;
+    --gray-dark: #4a5568;
+    --gray: #718096;
+    --gray-light: #e2e8f0;
+    --success: #38a169;
+    --success-light: #c6f6d5;
+    --info: #3182ce;
+    --info-light: #bee3f8;
+    --warning: #d69e2e;
+    --warning-light: #fefcbf;
+    --white: #ffffff;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --radius-sm: 0.25rem;
+    --radius: 0.5rem;
+    --radius-lg: 0.75rem;
+    --transition: all 0.3s ease;
+    --sidebar-width: 260px;
+    --header-height: 70px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #f9fafb;
+    color: var(--dark);
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    cursor: pointer;
+    font-family: inherit;
+    border: none;
+    background: none;
+}
+
+/* Layout */
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: var(--sidebar-width);
+    background-color: var(--white);
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 50;
+    transition: transform 0.3s ease;
+}
+
+.brand {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--gray-light);
+}
+
+.brand h1 {
+    color: var(--primary);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.donor-profile {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--gray-light);
+}
+
+.profile-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: var(--primary-light);
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    margin-right: 1rem;
+}
+
+.profile-info h3 {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.profile-info span {
+    color: var(--gray);
+    font-size: 0.875rem;
+}
+
+.navigation {
+    padding: 1.5rem 0;
+    flex: 1;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    padding: 0.875rem 1.5rem;
+    color: var(--gray-dark);
+    font-weight: 500;
+    transition: var(--transition);
+    border-left: 3px solid transparent;
+}
+
+.nav-link:hover {
+    color: var(--primary);
+    background-color: var(--primary-light);
+}
+
+.nav-link.active {
+    color: var(--primary);
+    background-color: var(--primary-light);
+    border-left-color: var(--primary);
+}
+
+.nav-link i {
+    font-size: 1.125rem;
+    width: 24px;
+    margin-right: 0.75rem;
+}
+
+.sidebar-footer {
+    padding: 1.5rem;
+    border-top: 1px solid var(--gray-light);
+}
+
+.logout-button {
+    display: flex;
+    align-items: center;
+    color: var(--gray);
+    transition: var(--transition);
+}
+
+.logout-button:hover {
+    color: var(--primary);
+}
+
+.logout-button i {
+    margin-right: 0.75rem;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    margin-left: var(--sidebar-width);
+    position: relative;
+}
+
+.mobile-header {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--header-height);
+    background-color: var(--white);
+    box-shadow: var(--shadow-sm);
+    z-index: 40;
+    padding: 0 1.5rem;
+    align-items: center;
+}
+
+.mobile-header h1 {
+    color: var(--primary);
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.menu-toggle {
+    color: var(--dark);
+    font-size: 1.25rem;
+    margin-right: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content-wrapper {
+    padding: 2rem;
+}
+
+.page-header {
+    margin-bottom: 2rem;
+}
+
+.header-content h1 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.header-content p {
+    color: var(--gray);
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background-color: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    transition: var(--transition);
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.blood-type .stat-icon,
+.blood-type:hover {
+    background-color: #ffedf0;
+    color: #e53e3e;
+}
+
+.total-donations .stat-icon,
+.total-donations:hover {
+    background-color: #ebf8ff;
+    color: #3182ce;
+}
+
+.last-donation .stat-icon,
+.last-donation:hover {
+    background-color: #faf5ff;
+    color: #805ad5;
+}
+
+.eligibility-status .stat-icon,
+.eligibility-status:hover {
+    background-color: #f0fff4;
+    color: #38a169;
+}
+
+.stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    margin-right: 1rem;
+}
+
+.stat-details h3 {
+    font-size: 0.875rem;
+    color: var(--gray);
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+/* Containers */
+.eligibility-container,
+.blood-drives-container {
+    background-color: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.container-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--gray-light);
+}
+
+.container-header h2 {
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+.view-all {
+    color: var(--primary);
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.eligibility-content,
+.blood-drives-content {
+    padding: 1.5rem;
+}
+
+/* Eligibility Message */
+.eligibility-message {
+    display: flex;
+    align-items: flex-start;
+    background-color: var(--success-light);
+    color: var(--success);
+    padding: 1rem;
+    border-radius: var(--radius);
+    margin-bottom: 1.5rem;
+}
+
+.message-icon {
+    font-size: 1.125rem;
+    margin-right: 1rem;
+    margin-top: 0.25rem;
+}
+
+.message-text p {
+    line-height: 1.6;
+}
+
+.donate-button {
+    background-color: var(--primary);
+    color: var(--white);
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.donate-button:hover {
+    background-color: var(--primary-hover);
+}
+
+.donate-button i {
+    margin-right: 0.5rem;
+}
+
+/* Blood Drive Cards */
+.blood-drive-card {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--gray-light);
+    margin-bottom: 1rem;
+    transition: var(--transition);
+}
+
+.blood-drive-card:last-child {
+    margin-bottom: 0;
+}
+
+.blood-drive-card:hover {
+    box-shadow: var(--shadow);
+}
+
+.drive-date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 70px;
+    background-color: var(--primary-light);
+    color: var(--primary);
+    border-radius: var(--radius-sm);
+    margin-right: 1rem;
+}
+
+.drive-date .month {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.drive-date .day {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.drive-details {
+    flex: 1;
+}
+
+.drive-details h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.drive-time,
+.drive-location {
+    font-size: 0.875rem;
+    color: var(--gray);
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.25rem;
+}
+
+.drive-time i,
+.drive-location i {
+    margin-right: 0.5rem;
+    font-size: 0.75rem;
+}
+
+.drive-location {
+    margin-bottom: 0;
+}
+
+.schedule-button {
+    background-color: transparent;
+    color: var(--primary);
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--primary);
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+}
+
+.schedule-button:hover {
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+    
+    .sidebar.active {
+        transform: translateX(0);
+    }
+    
+    .main-content {
+        margin-left: 0;
+    }
+    
+    .mobile-header {
+        display: flex;
+    }
+    
+    .content-wrapper {
+        padding-top: calc(var(--header-height) + 1rem);
+    }
+}
+
+@media (max-width: 576px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .content-wrapper {
+        padding: calc(var(--header-height) + 1rem) 1rem 1rem;
+    }
+    
+    .drive-action {
+        margin-top: 1rem;
+    }
+    
+    .blood-drive-card {
+        flex-wrap: wrap;
+    }
+}
